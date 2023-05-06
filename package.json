@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "husky install",
+    "pre-commit": "yarn format && git add ."
   },
   "dependencies": {
     "@types/node": "20.1.0",
@@ -24,6 +26,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "prettier": "2.8.8"
+    "prettier": "2.8.8",
+    "husky": "^8.0.0"
   }
 }
