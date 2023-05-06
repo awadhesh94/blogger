@@ -2,40 +2,21 @@ name: Deploy
 
 on:
   push:
-      branches: [main]
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./src
-
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v2 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
-
-      - name: Cache  💾
-        uses: actions/cache@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          path: ${{ github.workspace }}/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          
-      - run: yarn install
-      
-      - run: yarn build
-        env:
-            CI: true
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@3.6.2
-        with:
-          GITHUB_TOKEN: ${{ secrets.STORYBOOK_ID }}
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: src/out # The folder the action should deploy.
-          CLEAN: true # Automatically remove deleted files from the deploy branch
+          node-version: 14.x
+      - run: |
+          yarn i
+          yarn run build
