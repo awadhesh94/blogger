@@ -9,7 +9,7 @@
     "lint": "next lint",
     "format": "prettier --write .",
     "prepare": "husky install",
-    "pre-commit": "yarn format"
+    "pre-commit": "yarn format && git add ."
   },
   "dependencies": {
     "@types/node": "20.1.0",
