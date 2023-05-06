@@ -3,14 +3,6 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'font-100';
-  src: url('../../public/fonts/brand-100.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'font-200';
-  src: url('../../public/fonts/brand-200.ttf') format('truetype');
-}
-@font-face {
   font-family: 'font-300';
   src: url('../../public/fonts/brand-300.ttf') format('truetype');
 }
