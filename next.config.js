@@ -1,8 +1,9 @@
-module.exports = {
-  /* Other configuration options */
-  exportPathMap: async function (defaultPathMap) {
-    return defaultPathMap;
-  },
-  exportTrailingSlash: true,
-  export: true,
+/**
+ * @type {import('next').NextConfig}
+ */
+const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
 };
+
+module.exports = nextConfig;
