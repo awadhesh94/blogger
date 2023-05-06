@@ -5,7 +5,7 @@ on:
       branches: [main]
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,3 +31,10 @@ jobs:
 
       - name: Build
         run: yarn build
+      
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.4 # Replace with any deploy action you prefer
+        with:
+          branch: gh-pages # Replace with the name of your deployment branch
+          folder: out # Replace with the name of the directory where your built files are outputted
+          token: ${{ secrets.STORYBOOK_ID }}
